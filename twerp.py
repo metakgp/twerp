@@ -16,5 +16,6 @@ for day in data:
             slots.append(element['slot']['slot'])
 slots = set(slots)
 
+#def createtable
 def twerpUpdate():
     pass
