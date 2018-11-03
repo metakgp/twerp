@@ -1,6 +1,7 @@
 import requests
 import time
-from twerp import twerpUpdate
+#from twerp import twerpUpdate
+
 def getDept():
     r = requests.get('https://hercules-10496.herokuapp.com/api/v1/department/info/all')
     #departments = {}
@@ -16,6 +17,7 @@ def getCoursesDeptWise(deptCode):
 def getCourseData(course):
     r = requests.get('https://hercules-10496.herokuapp.com/api/v1/course/timetable/{0}'.format(course['code']))
     courseData = r.json()
+    print(courseData)
     return courseData
 
 #def twerp():
@@ -31,4 +33,5 @@ def main():
             time.sleep(0.5)            
 
 if __name__ == '__main__':
-    main()
+    getCourseData({'code': 'CS60092'})
+    #main()
