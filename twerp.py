@@ -5,82 +5,65 @@ import re
 import os
 path = os.path.abspath(os.path.dirname(__file__))
 
-def getSlotData(slotCodes):
+#0 MEAN IN DEPT
 
-    slots = []
-    for slotCode in slotCodes:
-        with open(os.path.join(path, 'slots.1')) as f:
-            for line in f:
-                if line.startswith(slotCode):
-                    for slot in (line.split()[1:]):
-                        if slot not in slots:
-                            slots.append(slot)
-    return (slots)
+def createTimeTableFromSlots(slots,venues):
+
+    days = ['Monday','Tuesday','Wednesday','Thursday','Friday']
+    hours = ['8','9','10','11','12','LunchBreak','2','3','4','5'] #here Lunchbreak could have been replaed with any string not between the hours that class goes on
+
+    timetable = ''#{| class="wikitable"\n|-! Day !! 8:00-8:55 am !! 9:00-9:55 am !! 10:00-10:55 am !! 11:00-11:55 am !! 12:00-12:55 pm !! Lunch break !! 2:00-2:55 pm !! 3:00-3:55 pm!! 4:00-4:55 pm!! 5:00-5:55 pm|-'
+    currentSlotIndex = 0
+
+    for day in days:
+        timetable +='\n|-\n!' + day + "\n"
+        hourIndex = 0
+        #while (day == slots[currentSlotIndex]['day']):
+        for hourIndex in range(10):
+            timetable += '|| '
+            if(currentSlotIndex < len(venues)):
+                if (day == slots[currentSlotIndex]['day']) and (hours[hourIndex] == slots[currentSlotIndex]['time']):
+                    timetable += ','.join(venues[currentSlotIndex])
+                    currentSlotIndex += 1
 
 
-def getSlotCodes(data):
-    slotCodes = []
-    for day in data:
-        #print (days)
-        #print(type(data[day]))
-        if(data[day] != None):
-            for element in data[day]:
-                if element['slot']['slot'] not in slotCodes:
-                    slotCodes.append(element['slot']['slot'])
-
-    slots  = getSlotData(slotCodes)
-    return slots
-
-def createTimeTableFromSlots(slots):
-    timetable = []
-    for i in range(5):
-        dayWiseTimeTable = []
-        for j in range(10):
-            dayWiseTimeTable.append(0)
-        timetable.append(dayWiseTimeTable)
-
-    for hoursAndDay in slots:
-        day = int(hoursAndDay[0])
-        hour = int(hoursAndDay[1])
-        if hour>4:
-            hour = hour + 1
-        timetable[day][hour] = /
-
-    print(timetable)
-    print(slots)
+    #print(timetable)
+    #print(slots)
 
     return timetable
 
 
 def getTimeTable(data):
-    slots = getSlotCodes(data)
-    timetable = createTimeTableFromSlots(slots)
 
+    slots = []
+    venues = []
 
+    for day in data:
+        if(data[day] != None):
+            for element in data[day]:
+                slot = {}
+                slot['time'] = element['slot']['time']['time'].split(' ', 1)[0]
+                slot['day'] = element['slot']['time']['day']
+                slots.append(slot)
+                modified_room = []
+                for room in element['rooms']:
+                    if room == '0':
+                        modified_room.append('In Dept')
+                    else:
+                        modified_room.append(room)
+                element['rooms'] = modified_room
+                venues.append(element['rooms'])
+
+    timetable = createTimeTableFromSlots(slots,venues)
 
 
 def obtainCourseData():
     data ={'Monday': None, 'Tuesday': None, 'Wednesday': None, 'Thursday': [{'course': {'name': 'INFORMATION RETRIEVAL', 'code': 'CS60092', 'credits': 3}, 'slot': {'time': {'day': 'Thursday', 'time': '3 PM '}, 'slot': 'V3'}, 'rooms': ['CSE-120']}, {'course': {'name': 'INFORMATION RETRIEVAL', 'code': 'CS60092', 'credits': 3}, 'slot': {'time': {'day': 'Thursday', 'time': '4 PM '}, 'slot': 'V3'}, 'rooms': ['CSE-120']}], 'Friday': [{'course': {'name': 'INFORMATION RETRIEVAL', 'code': 'CS60092', 'credits': 3}, 'slot': {'time': {'day': 'Friday', 'time': '3 PM'}, 'slot': 'V3'}, 'rooms': ['CSE-120']}]}
+    print(data)
     getTimeTable(data)
 
 
-def UpdateCourses(site):
-    cat = pywikibot.Category(site,'Category:Courses')
-    gen = pagegenerators.CategorizedPageGenerator(cat)
-
-    allcourses = {i.title()[:7]:i for i in gen}
-
-    course_page = allcourses['CS60092']
-    wiki_text = course_page.text
-
-    #course_page.text = wiki_text + 'a'# TODO: Replace random mode by frecency.
-    #course_page.save(('Updated on ' + date.today().strftime('%B %d, %Y')))
-
-
-
-def main():
-    site = pywikibot.Site()
 
 if __name__ == '__main__':
     obtainCourseData()
-    main()
+    #main()
