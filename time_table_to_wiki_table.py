@@ -1,12 +1,10 @@
 import os
 path = os.path.abspath(os.path.dirname(__file__))
 
-#0 MEAN IN DEPT
-
 def createTimeTableFromSlots(slots,venues):
 
     days = ['Monday','Tuesday','Wednesday','Thursday','Friday']
-    hours = ['8','9','10','11','12','LunchBreak','2','3','4','5'] #here Lunchbreak could have been replaed with any string not between the hours that class goes on
+    hours = ['8','9','10','11','12','LunchBreak','2','3','4','5']
 
     timetable = '{| class="wikitable \n|-\n! Day !! 8:00-8:55 am !! 9:00-9:55 am !! 10:00-10:55 am !! 11:00-11:55 am !! 12:00-12:55 pm !!  !! 2:00-2:55 pm !! 3:00-3:55 pm!! 4:00-4:55 pm!! 5:00-5:55 pm'
     currentSlotIndex = 0
@@ -14,7 +12,6 @@ def createTimeTableFromSlots(slots,venues):
     for day in days:
         timetable +='\n|-\n!' + day + "\n"
         hourIndex = 0
-        #while (day == slots[currentSlotIndex]['day']):
         for hourIndex in range(10):
             timetable += '|| '
             if(currentSlotIndex < len(venues)):
@@ -23,7 +20,6 @@ def createTimeTableFromSlots(slots,venues):
                     currentSlotIndex += 1
     timetable += '\n|}'
     return timetable
-
 
 def getTimeTable(data):
 
@@ -39,7 +35,7 @@ def getTimeTable(data):
                 slots.append(slot)
                 modified_room = []
                 for room in element['rooms']:
-                    if room == '0':
+                    if room == '0': #0 mean the class is in some room "in department"
                         modified_room.append('In Dept')
                     else:
                         modified_room.append(room)

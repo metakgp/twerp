@@ -2,7 +2,6 @@ import requests
 
 def getDeptList():
     r = requests.get('https://hercules-10496.herokuapp.com/api/v1/department/info/all')
-    #departments = {}
     departments = r.json()
     return departments
 
@@ -19,4 +18,3 @@ def getCourseData(course):
 
 if __name__ == '__main__':
     getCourseData({'code': 'CS60092'})
-    #main()
