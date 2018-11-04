@@ -16,10 +16,3 @@ As of now it can add the timetable for the courses being offered by IITKGP in a 
 
 * Call (a modified) Blackjack script to update the grades.
 
-
-
-
-
-As of now it can add the details of time table to various courses
-
-----README UNDER CONSTRUCTION-----
