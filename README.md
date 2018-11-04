@@ -16,3 +16,24 @@ As of now it can add the timetable for the courses being offered by IITKGP in a 
 
 * Call (a modified) Blackjack script to update the grades.
 
+# Using twerp
+
+* Clone and change your directory to this repo and run `pip install -r requirements.txt`
+
+* Clone the pywikibot library :
+
+`git clone https://gerrit.wikimedia.org/r/pywikibot/core.git wiki_files`
+
+`mv wiki_files/* .`
+
+* Generate wiki files :
+
+`python3 generate_family_file.py https://wiki.metakgp.org/w/Main_Page metakgp`
+
+* Generate user files (set username as Twerp) and don't set any bot password yet, it will ask during runtime :
+
+`python3 generate_user_files.py`
+
+* Run the bot :
+
+`python3 twerp.py`
