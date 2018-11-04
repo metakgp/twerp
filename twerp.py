@@ -4,6 +4,7 @@ import time
 import re
 import os
 path = os.path.abspath(os.path.dirname(__file__))
+
 import string
 
 from course_details import getDeptList,getCourseData,getCoursesDeptWise
