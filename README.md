@@ -8,6 +8,9 @@ Rajat is a twerp. He complains about the wiki not being updated frequently and i
 
 ## Abilities
 As of now it can add the timetable for the courses being offered by IITKGP in a semester to the corresponding page on metakgp wiki.
+![Example](https://github.com/Ayushk4/twerp/blob/master/twerp.png)
+
+
 
 #### To-Dos
 * Update the pages on professors with the follwing features (The script written will be running on per semester basis ):
