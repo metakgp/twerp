@@ -1,7 +1,7 @@
 # twerp
 Tethering Wiki to ERP
 
-This is supposed to use the hercules API to update the 'Metakgp' wiki pages every semester for all the relevant pages with all the possible details.
+It uses the hercules API to update the 'Metakgp' wiki pages every semester for all the relevant pages with all the possible details.
 
 ##### Inspiration :
 Rajat is a twerp. He complains about the wiki not being updated frequently and is not willing to edit the pages by himself..... Presenting to you twerp - The complete remedy for twerp. Let the bot handle it. 
