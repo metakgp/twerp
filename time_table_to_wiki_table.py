@@ -49,4 +49,8 @@ def getTimeTable(data):
     if len(slots) == 0:
         return ''
     timetable = createTimeTableFromSlots(slots,venues)
-    return timetable
+
+    if len(timetable) != 0:
+        return timetable
+    else :
+        return ''
