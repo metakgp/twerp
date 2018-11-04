@@ -7,7 +7,7 @@ This is supposed to use the hercules API to update the 'Metakgp' wiki pages ever
 Rajat is a twerp. He complains about the wiki not being updated frequently and is not willing to edit the pages by himself..... Presenting to you twerp - The complete remedy for twerps.
 
 ## Abilities
-As of now it can add the timetable for the courses being offered by IITKGP in a semester.
+As of now it can add the timetable for the courses being offered by IITKGP in a semester to the corresponding page on metakgp wiki.
 
 #### To-Dos
 * Update the pages on professors with the follwing features (The script written will be running on per semester basis ):
