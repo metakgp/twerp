@@ -1,6 +1,3 @@
-#This is called in case the course page does not exist on wiki.
-
-import time
 import pywikibot
 
 def update_with_timetable(allcoursesonwiki,site,course,timetable):
@@ -9,11 +6,19 @@ def update_with_timetable(allcoursesonwiki,site,course,timetable):
         course_page.text = course_page.text.rsplit('=Time Table=', 1)[0] + "\n\n=Time Table=\n\n" + timetable + "\n"
     else:
         course_page.text = course_page.text + "\n\n=Time Table=\n\n" + timetable + "\n"
-        print(course_page.text)
+
     
     course_page.save(('Add Time Table'))
-    time.sleep(100)
-    print("Back to life")
+
+
+def update_without_timetable(allcoursesonwiki,site,course):
+    course_page = allcoursesonwiki[course]
+    if '=Time Table=' in course_page.text:
+        course_page.text = course_page.text.rsplit('=Time Table=', 1)[0] + "\n\n"
+        course_page.save(('Remove Time Table'))
+
+    else:
+        pass
 
 def create_course_page(site,course,timetable):
 
@@ -56,6 +61,4 @@ def create_course_page(site,course,timetable):
     course_page.text = course_text
     msg = "Create Page for {}".format(course['name'])
     course_page.save(msg)
-    time.sleep(1)
-    print("Back to life")
 
