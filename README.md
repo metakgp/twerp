@@ -40,3 +40,6 @@ As of now it can add the timetable for the courses being offered by IITKGP in a 
 * Run the bot :
 
 `python3 twerp.py`
+
+## Contribution
+Join the slack channel : metakgp.slack.com
