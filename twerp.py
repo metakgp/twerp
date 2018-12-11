@@ -76,7 +76,7 @@ def main():
     print("type 2 for updating prof page with timetable")
     print("type 3 for doing both of the above")
     answer=input('>')
-    if(answer==1):
+    if(answer=='1'):
         cat = pywikibot.Category(site,'Category:Courses')
         gen = pagegenerators.CategorizedPageGenerator(cat)
 
@@ -88,11 +88,11 @@ def main():
         
         course_department_wise(allcoursesonwiki,existing_course_pages)
     
-    if(answer==2):
+    if(answer=='2'):
         print('Starting to update prof pages')
         update_time_table_of_prof()
     
-    if(answer==3):
+    if(answer=='3'):
         cat = pywikibot.Category(site,'Category:Courses')
         gen = pagegenerators.CategorizedPageGenerator(cat)
 
