@@ -1,13 +1,19 @@
+import os
+import sys
+path = os.path.abspath(os.path.dirname(__file__))
+PATH_TO_MODULE=os.path.join(path,'wiki_files')
+sys.path.append(PATH_TO_MODULE)
+
+
 import pywikibot
 from pywikibot import pagegenerators
-import os
-path = os.path.abspath(os.path.dirname(__file__))
-
 import string
 
 from course_details import getDeptList,getCourseData,getCoursesDeptWise
 from time_table_to_wiki_table import getTimeTable
 from add_timetable_to_wiki import create_course_page, update_with_timetable, update_without_timetable
+from prof_details import get_all_info_of_faculty,get_table_of_prof
+from update_prof_table import check_profpage_existence, create_prof_page,make_Time_Table_of_prof, update_profpage_with_timetable
 
 site = pywikibot.Site()
 
@@ -50,6 +56,19 @@ def course_department_wise(allcoursesonwiki,existing_course_pages):
 
 
 #      TODO : WRITE THE NAME OF THE CURRENT SEM AS HEADING TO THE TIMETABLE
+def update_time_table_of_prof():
+    info_table=get_all_info_of_faculty()
+    for entry in info_table:
+        table_json=get_table_of_prof(entry['name'],entry['department']['code'])
+        timetable=make_Time_Table_of_prof(table_json)
+        prof_existence=check_profpage_existence(entry['name'])
+        if(prof_existence==1):#1 means not exist
+            print("Page of professor {} not found ".format(entry['name']))
+            create_prof_page(entry,site,timetable)
+        else:
+            print('Professor {} page found'.format(entry['name']))
+            update_profpage_with_timetable(entry,site,timetable)
+        print("Updated time table of {}".format(entry['name']))
 
 def main():
 
@@ -62,8 +81,9 @@ def main():
     for keys in allcoursesonwiki:
         existing_course_pages.append(keys)
 
-    course_department_wise(allcoursesonwiki,existing_course_pages)    
-
+    course_department_wise(allcoursesonwiki,existing_course_pages)
+    print('Starting to update prof pages')    
+    update_time_table_of_prof()
 
 if __name__ == '__main__':
     main()

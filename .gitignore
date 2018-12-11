@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+user-config.py
+apicache-py3
+pywikibot.lwp
+throttle.ctrl
+logs
+wiki_files
