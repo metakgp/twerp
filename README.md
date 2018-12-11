@@ -21,25 +21,32 @@ As of now it can add the timetable for the courses being offered by IITKGP in a 
 
 # Using twerp
 
-* Clone and change your directory to this repo and run `pip install -r requirements.txt`
+* Running using pipenv:
+    ----Clone and change your directory to this repo and run `pipenv install`:
+            This will install the requirements and will create a virtual environment
 
-* Clone the pywikibot library :
+    ----Run `pipenv shell`:
+            This will activate the virtualenv
 
-`git clone https://gerrit.wikimedia.org/r/pywikibot/core.git wiki_files`
 
-`mv wiki_files/* .`
+*Running using pip:
+    Clone and change your directory to this repo and run `pip install -r requirements.txt`
 
-* Generate wiki files :
 
-`python3 generate_family_file.py https://wiki.metakgp.org/w/Main_Page metakgp`
+* Run the setup.py file if you have downloaded first time  or want to add a new wiki or modify an old wiki configurations:
+    `python3 setup.py`
+ 
+* It will first clone pywikibot repo in folder named `wiki_files` in your current directory
 
-* Generate user files (set username as Twerp) and don't set any bot password yet, it will ask during runtime :
+* It will ask for the link of the wiki and the with which you want to save it:
+    For metakgp write:
+        link = `https://wiki.metakgp.org/w/Main_Page`
+        name = `metakgp`
 
-`python3 generate_user_files.py`
+* It will then generate user files (set username as Twerp) and don't set any bot password yet, it will ask during runtime :
 
 * Run the bot :
-
-`python3 twerp.py`
+    `python3 twerp.py`
 
 ## Contribution
 Join the slack channel : metakgp.slack.com
