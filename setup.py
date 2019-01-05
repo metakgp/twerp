@@ -17,5 +17,5 @@ else:
     os.chdir(PATH_TO_MODULE)
     output = os.system('python3 generate_family_file.py {} {}'.format(link,name))
 
-user_files_output=os.system('python3 generate_user_files.py -dir:{}'.format(path))
+user_files_output = os.system('python3 generate_user_files.py -dir:{}'.format(path))
 os.chdir(path)
