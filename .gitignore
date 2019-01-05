@@ -102,3 +102,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+#visual studio
+.vscode
+
+#created by pywikibot
+apicache-py3
+logs
+throttle.ctrl
+user-config.py
+wiki_files
+pywikibot.lwp
