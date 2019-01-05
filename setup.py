@@ -12,10 +12,10 @@ else:
     Repo.clone_from('https://gerrit.wikimedia.org/r/pywikibot/core.git', 'wiki_files')
     print("Downloaded pywikibot code from Github into the folder named wiki files")
 
-    link=input('Write the link for the wikipage : ')
-    name=input('What do you want to give the name : ')
+    link = input('Write the link for the wikipage : ')
+    name = input('What do you want to give the name : ')
     os.chdir(PATH_TO_MODULE)
-    output=os.system('python3 generate_family_file.py {} {}'.format(link,name))
+    output = os.system('python3 generate_family_file.py {} {}'.format(link,name))
 
 user_files_output=os.system('python3 generate_user_files.py -dir:{}'.format(path))
 os.chdir(path)
