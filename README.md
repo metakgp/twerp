@@ -13,40 +13,40 @@ As of now it can add the timetable for the courses being offered by IITKGP in a 
 
 
 #### To-Dos
-* Update the pages on professors with the follwing features (The script written will be running on per semester basis ):
-    - Time Table of a prof.
+* Update the pages on professors with the following features (The script written will be running on per semester basis ):
+    - Time Table of a prof (Right now works only for existing prof pages).
     - Append to his profile, the list of courses that he taught in a semester.
 
 * Call (a modified) Blackjack script to update the grades.
 
 # Using twerp
 
-* Running using pipenv:
-    ----Clone and change your directory to this repo and run `pipenv install`:
-            This will install the requirements and will create a virtual environment
+* Running using pipenv:<br>
+    &nbsp; &nbsp; Clone and change your directory to this repo and run `pipenv install`:<br>
+            &nbsp; &nbsp; &nbsp; &nbsp; This will install the requirements and will create a virtual environment
 
-    ----Run `pipenv shell`:
-            This will activate the virtualenv
-
-
-*Running using pip:
-    Clone and change your directory to this repo and run `pip install -r requirements.txt`
+    &nbsp; &nbsp; Run `pipenv shell`:<br>
+            &nbsp; &nbsp; &nbsp; &nbsp; This will activate the virtualenv
 
 
-* Run the setup.py file if you have downloaded first time  or want to add a new wiki or modify an old wiki configurations:
-    `python3 setup.py`
+* Running using pip:<br>
+    &nbsp; &nbsp; Clone and change your directory to this repo and run `pip install -r requirements.txt`
+
+
+* Run the setup.py file if you have downloaded first time  or want to add a new wiki or modify an old wiki configurations:<br>
+    &nbsp; &nbsp; `python3 setup.py`
  
 * It will first clone pywikibot repo in folder named `wiki_files` in your current directory
 
-* It will ask for the link of the wiki and the with which you want to save it:
-    For metakgp write:
-        link = `https://wiki.metakgp.org/w/Main_Page`
-        name = `metakgp`
+* It will ask for the link of the wiki and the with which you want to save it:<br>
+    &nbsp; &nbsp; For metakgp write:<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; link = `https://wiki.metakgp.org/w/Main_Page`<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; name = `metakgp`
 
-* It will then generate user files (set username as Twerp) and don't set any bot password yet, it will ask during runtime :
+* It will then generate user files (set username as Twerp) and don't set any bot password yet, it will ask during runtime
 
-* Run the bot :
-    `python3 twerp.py`
-
+* Run the bot :<br>
+    &nbsp; &nbsp; `python3 twerp.py`
+ 
 ## Contribution
 Join the slack channel : metakgp.slack.com
