@@ -2,7 +2,7 @@ import os
 from git import Repo
 import sys
 path = os.path.abspath(os.path.dirname(__file__))
-PATH_TO_MODULE=os.path.join(path,'wiki_files')
+PATH_TO_MODULE = os.path.join(path,'wiki_files')
 sys.path.append(PATH_TO_MODULE)
 if(os.path.exists(PATH_TO_MODULE)):
     print('You have pywikibot repo downloaded')
