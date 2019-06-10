@@ -112,3 +112,6 @@ throttle.ctrl
 user-config.py
 wiki_files
 pywikibot.lwp
+
+# json files
+*.json
