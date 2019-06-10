@@ -11,7 +11,7 @@ def createTimeTableFromSlots(slots, venues):
     currentSlotIndex = 0
 
     for day in days:
-        timetable +='\n|-\n!' + day + "\n"
+        timetable += '\n|-\n!' + day + "\n"
         hourIndex = 0
         for hourIndex in range(10):
             timetable += '|| '
