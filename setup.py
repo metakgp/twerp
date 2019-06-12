@@ -9,7 +9,7 @@ if(os.path.exists(PATH_TO_MODULE)):
 
 else:
     print('Downloading pywikibot github repository')
-    Repo.clone_from('https://gerrit.wikimedia.org/r/pywikibot/core.git', 'wiki_files')
+    Repo.clone_from('https://github.com/wikimedia/pywikibot.git', 'wiki_files')
     print("Downloaded pywikibot code from Github into the folder named wiki files")
 
     link = input('Write the link for the wikipage : ')
