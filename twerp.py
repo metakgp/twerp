@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 path = os.path.abspath(os.path.dirname(__file__))
 PATH_TO_MODULE = os.path.join(path, 'wiki_files')
 sys.path.append(PATH_TO_MODULE)
@@ -14,6 +15,8 @@ from time_table_to_wiki_table import getTimeTable
 from add_timetable_to_wiki import create_course_page, update_with_timetable, update_without_timetable
 from prof_details import get_all_info_of_faculty, get_table_of_prof
 from update_prof_table import check_profpage_existence, make_Time_Table_of_prof, update_profpage_with_timetable
+from scrape import convert_form_to_dict
+from update_course_page_details import append_content_to_page
 
 site = pywikibot.Site()
 
@@ -71,13 +74,45 @@ def update_time_table_of_prof():
         print("Updated time table of {}".format(entry['name']))
 
 
+def update_course_page_data(allcoursesonwiki, spreadsheetid):
+    contents_of_page = [
+        '=Syllabus=',
+        '=Syllabus mentioned in ERP=',
+        '==Concepts taught in class==',
+        '===Student Opinion===',
+        '==How to Crack the Paper==',
+        '=Classroom resources=',
+        '=Additional Resources='
+        ]
+    # Remove the '=' sign
+    formatted_contents = []
+    for entry in contents_of_page:
+        s = []
+        for x in entry:
+            if x != '=':
+                s.append(x)
+        st = "".join(s)
+        formatted_contents.append(st)
+    required_data = convert_form_to_dict(spreadsheetid)
+    print('\n\n')
+    for entry in required_data:
+        course_page = allcoursesonwiki[entry['Course Code']]
+        new_text = append_content_to_page(course_page.text, entry,
+                                          formatted_contents)
+        course_page.text = new_text
+        course_page.save('Added data from Google Form')
+        print("Updated course data of course code ", entry['Course Code'])
+
+
 def main():
 
     print("What do you want to do")
     print("type 1 for updating course page with timetable")
     print("type 2 for updating prof page with timetable")
     print("type 3 for doing both of the above")
+    print("type 4 for updating course page data obtained from form")
     answer = input('>')
+    # print(answer)
     if(answer == '1'):
         cat = pywikibot.Category(site, 'Category:Courses')
         gen = pagegenerators.CategorizedPageGenerator(cat)
@@ -101,7 +136,13 @@ def main():
         course_department_wise(allcoursesonwiki, existing_course_pages)
         print('Starting to update prof pages')
         update_time_table_of_prof()
+    if(answer == '4'):
+        cat = pywikibot.Category(site, 'Category:Courses')
+        gen = pagegenerators.CategorizedPageGenerator(cat)
 
+        allcoursesonwiki = {i.title()[:7]: i for i in gen}
+        SPREADSHEET_ID = input('Write the spreadsheetID> ')
+        update_course_page_data(allcoursesonwiki, SPREADSHEET_ID)
 
 if __name__ == '__main__':
     main()
