@@ -43,7 +43,7 @@ As of now it can
 
 - It will first clone pywikibot repo in folder named `wiki_files` in your current directory
 
-- It will ask for the link of the wiki and the with which you want to save it:  
+- It will ask for the link of the wiki and the with which you want to save it:
     &nbsp; &nbsp; For metakgp write:  
         &nbsp; &nbsp; &nbsp; &nbsp; link = `https://wiki.metakgp.org/w/Main_Page`  
         &nbsp; &nbsp; &nbsp; &nbsp; name = `metakgp`
@@ -53,12 +53,21 @@ As of now it can
 - Run the bot :  
     &nbsp; &nbsp; `python3 twerp.py`
 
-### For updating data from forms
+### For updating data from form under Course Archiving Drive
+
+We are collecting information from masses to update courses on metakgp wiki in [this form](https://forms.gle/1WcXp8UQ6UpaNF7y9). Below is the process on how to update from the 
+sheet to the wiki using twerp.
 
 - First enable the Google Sheets API, check [here](https://developers.google.com/sheets/api/) for its doc.
 - Obtain the `credentials.json` file from the **Google API Console**.
-- See about the sheetID of a Google Spreadsheet and basic usage of Google Sheet API [here](https://developers.google.com/sheets/api/guides/concepts)
+- Create a new sheet that is copy of response sheet and delete entries till we have already updated (mentioned below).
+- See about the sheetID of the new Google Spreadsheet and basic usage of Google Sheet API [here](https://developers.google.com/sheets/api/guides/concepts)
 - It will ask for the sheetID during runtime, make sure you should have the `credentials.json` file in the same folder as `twerp.py`
+- If the script stops in between, please remove entries till the row that have been updated during this runtime otherwise duplicate entries will be created.
+
+Once the update is done, manually verify if the update was successful and make edits if any necessary.
+
+**NOTE: Updated till row number 29**
 
 ## Contribution
 
