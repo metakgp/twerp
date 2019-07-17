@@ -103,12 +103,14 @@ def update_course_page_data(allcoursesonwiki, spreadsheetid):
     # print(course_page.text)
     # course_page.save('Test: added data from google form')
     for entry in required_data:
-        course_page = allcoursesonwiki[entry['Course Code']]
-        new_text = append_content_to_page(course_page.text, entry,
-                                          formatted_contents)
-        course_page.text = new_text
-        course_page.save('Added data from Google Form')
-        print("Updated course data of course code ", entry['Course Code'])
+        course_page = allcoursesonwiki.get(entry['Course Code'])
+        # if course page is not there leave for now
+        if course_page is not None:
+            new_text = append_content_to_page(course_page.text, entry,
+                                              formatted_contents)
+            course_page.text = new_text
+            course_page.save('Added data from Google Form')
+            print("Updated course data of course code ", entry['Course Code'])
 
 
 def main():
