@@ -52,7 +52,12 @@ As of now it can
 - Run the bot :  
     &nbsp; &nbsp; `python3 twerp.py`
 
-- For updating data from forms, it will ask for the sheetID during runtime, make sure you should have the `credentials.json` file in the same folder as `twerp.py`
+### For updating data from forms
+
+- First enable the Google Sheets API, check [here](https://developers.google.com/sheets/api/) for its doc.
+- Obtain the `credentials.json` file from the **Google API Console**.
+- See about the sheetID of a Google Spreadsheet and basic usage of Google Sheet API [here](https://developers.google.com/sheets/api/guides/concepts)
+- It will ask for the sheetID during runtime, make sure you should have the `credentials.json` file in the same folder as `twerp.py`
 
 ## Contribution
 
