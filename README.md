@@ -47,6 +47,7 @@ As of now it can
     &nbsp; &nbsp; For metakgp write:  
         &nbsp; &nbsp; &nbsp; &nbsp; link = `https://wiki.metakgp.org/w/Main_Page`  
         &nbsp; &nbsp; &nbsp; &nbsp; name = `metakgp`
+        &nbsp; &nbsp; &nbsp; &nbsp; family = 5 (it'll be mediawiki)
 
 - It will then generate user files (set username as Twerp) and don't set any bot password yet, it will ask during runtime
 
