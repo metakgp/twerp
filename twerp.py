@@ -94,7 +94,14 @@ def update_course_page_data(allcoursesonwiki, spreadsheetid):
         st = "".join(s)
         formatted_contents.append(st)
     required_data = convert_form_to_dict(spreadsheetid)
-    print('\n\n')
+    # print('\n\n')
+    # course_page = allcoursesonwiki['AE31001']
+    # print(course_page.text)
+    # print('\n\n\n\n')
+    # new_text = append_content_to_page(course_page.text, required_data[8], formatted_contents)
+    # course_page.text = new_text
+    # print(course_page.text)
+    # course_page.save('Test: added data from google form')
     for entry in required_data:
         course_page = allcoursesonwiki[entry['Course Code']]
         new_text = append_content_to_page(course_page.text, entry,
