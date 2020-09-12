@@ -2,7 +2,7 @@
 
 Tethering Wiki to ERP
 
-It uses the [hercules](https://github.com/kshitij10496/hercules) API to update the 'Metakgp' wiki pages every semester for all the relevant pages with all the possible details. It is aimed at being the one bot that needs to be ran one a semester for updating with all the relevant info, including calling [blackjack](https://github.com/metakgp/blackjack/blob/master/blackjack.py) (bot for grades updation) and performing the duties of [kakashi](https://github.com/metakgp/kakashi) bots
+It uses the [hercules](https://github.com/kshitij10496/hercules) API to update the 'Metakgp' wiki pages every semester for all the relevant pages with all the possible details. It is aimed at being the one bot that needs to run once a semester for updating all the relevant info, including calling [blackjack](https://github.com/metakgp/blackjack/blob/master/blackjack.py) (bot for grades update) and performing the duties of [kakashi](https://github.com/metakgp/kakashi) bots
 
 ## Inspiration
 
@@ -43,7 +43,7 @@ As of now it can
 
 - It will first clone pywikibot repo in folder named `wiki_files` in your current directory
 
-- It will ask for the link of the wiki and the with which you want to save it:
+- It will ask for the link of the wiki and with which you want to save it:
     &nbsp; &nbsp; For metakgp write:  
         &nbsp; &nbsp; &nbsp; &nbsp; link = `https://wiki.metakgp.org/w/Main_Page`  
         &nbsp; &nbsp; &nbsp; &nbsp; name = `metakgp`
@@ -61,7 +61,7 @@ sheet to the wiki using twerp.
 
 - First enable the Google Sheets API, check [here](https://developers.google.com/sheets/api/) for its doc.
 - Obtain the `credentials.json` file from the **Google API Console**.
-- Create a new sheet that is copy of response sheet and delete entries till we have already updated (mentioned below).
+- Create a new sheet which is a copy of the response sheet and delete the entries till we have already updated (mentioned below).
 - See about the sheetID of the new Google Spreadsheet and basic usage of Google Sheet API [here](https://developers.google.com/sheets/api/guides/concepts)
 - It will ask for the sheetID during runtime, make sure you should have the `credentials.json` file in the same folder as `twerp.py`
 - If the script stops in between, please remove entries till the row that have been updated during this runtime otherwise duplicate entries will be created.
